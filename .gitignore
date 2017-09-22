@@ -1,3 +1,7 @@
 .venv
 *.pyc
 .idea
+.tox
+.mypy_cache
+
+typecheck.xml
