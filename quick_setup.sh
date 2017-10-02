@@ -30,22 +30,32 @@ else
 fi
 
 echo "Installing virtualenv and autoenv...";
-pip3 install virtualenv autoenv
+pip3 install virtualenv
 
-read -p "Bash startup file [~/.bashrc]: " BASHRC
-BASHRC=${BASHRC:-~/.bashrc}
-BASHRC_ABS=`eval echo ${BASHRC//>}`
-
-# Check if their bash file has autoenv activated in it, if not, see if they want to add it
-if ! grep -q "activate.sh" $BASHRC_ABS ; then
-    read -r -p "Do you want to add autoenv to your $BASHRC (recommended)? [y/n] " response
+echo "Checking for autoenv installation...";
+pip3 freeze | grep -q  autoenv
+autoenv_installed=$?
+if [ ! ${autoenv_installed} -eq 0 ]
+then
+    read -r -p "Autoenv will automatically activate this virtualenv when you 'cd' into the directory.  Do you want to install autoenv? [y/n] " response
     if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
     then
-        echo "Adding autoenv to $BASHRC...";
-        echo "# Activate autoenv" >> $BASHRC_ABS
-        echo "source `which activate.sh`" >> $BASHRC_ABS
-        echo "cd ." >> $BASHRC_ABS
+        pip3 install autoenv
+
+        read -p "Bash startup file [~/.bashrc]: " BASHRC
+        BASHRC=${BASHRC:-~/.bashrc}
+        BASHRC_ABS=`eval echo ${BASHRC//>}`
+
+        # Check if their bash file has autoenv activated in it, if not, see if they want to add it
+        if ! grep -q "activate.sh" $BASHRC_ABS ; then
+            echo "Adding autoenv to $BASHRC...";
+            echo "# Activate autoenv" >> $BASHRC_ABS
+            echo "source `which activate.sh`" >> $BASHRC_ABS
+            echo "cd ." >> $BASHRC_ABS
+        fi
     fi
+else
+    echo "Autoenv already installed.";
 fi
 
 VENV=.venv
@@ -63,8 +73,16 @@ if [ -f requirements.txt ]; then
     pip3 install -r requirements.txt
 fi
 
-echo "
-Please run
-  source $BASHRC
+if [ ! -z "${BASHRC}" ]; then
+    echo "
+    Please run
+      source $BASHRC
 
-"
+    "
+else
+    echo "
+    To activate your virtualenv, please run
+        source $VENV/bin/activate
+
+    ";
+fi
