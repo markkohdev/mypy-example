@@ -3,5 +3,6 @@
 .idea
 .tox
 .mypy_cache
+reports
 
 typecheck.xml
