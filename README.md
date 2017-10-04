@@ -30,5 +30,11 @@ tox
 ```
 and it will run your tests in fancy isolated test environments.
 
+#### [quick_setup.sh](/quick_setup.sh)
+A setup file for this repository.  It will install python3 on your linux or Mac machine, create a virtual environment, and install some other helpful things if you choose to.
+
 #### [requirements.txt](/requirements.txt)
 Our pip dependencies file.  This file includes any python packages you need in order to run this jawn.  It also specifies Mypy as a dependency.
+
+#### [.travis.yml](/.travis.yml)
+Our TravisCI configuration file.  [Travis CI](https://travis-ci.org/) is an easy to configure CI pipeline that's free for open-source projects.  This file is a simple example of how to configure travis to run your tox tests, which will in turn run your MyPy tests.
