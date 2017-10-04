@@ -1,5 +1,6 @@
-# MyPy Example Repo
-Hey, this is an example repo that will maybe help you get MyPy integrated into your own code base :)
+# MyPy Example Repo [![Build Status](https://travis-ci.org/markkohdev/mypy-example.svg?branch=master)](https://travis-ci.org/markkohdev/mypy-example)
+This is an example repo that will maybe help you get MyPy integrated into your own code base :)
+
 
 ### What is MyPy?
 [MyPy](https://github.com/python/mypy) is an optional static type checker for Python.
