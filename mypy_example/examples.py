@@ -25,7 +25,7 @@ print(p.describe())
 
 
 # FAIL CASES
-# print(p.decribe())
+print(p.decribe())
 
 
 def func_with_optional(opt: Optional[str] = None) -> Optional[str]:
@@ -41,8 +41,8 @@ print(func_with_optional())
 
 
 # FAIL CASES
-# func_with_optional(1)
-# func_with_optional(x)
+func_with_optional(1)
+func_with_optional(x)
 
 
 def add_to_banana(to_add: str) -> str:
@@ -67,11 +67,12 @@ fibs = fib(21)
 
 
 # FAIL CASES
-# some_value = some_func(-10)  # type: str
-# fib(some_value)
-# other_value: str = some_func(-10)
+some_value = some_func(-10)  # type: str
+fib(some_value)
+other_value: str = some_func(-10)
+fib(other_value)
 
 def foo(a: str) -> str:
-    return '(' + a.strip() + ')'
+    # return '(' + a.strip() + ')'
     # FAIL CASES
-    # return '(' + a.split() + ')'
+    return '(' + a.split() + ')'

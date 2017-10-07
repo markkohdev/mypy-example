@@ -28,7 +28,7 @@ def complex_dict_consumer(jawn: Optional[MyComplexDict]) -> str:
     return ', '.join(result)
 
 
-crazy_dict: MyComplexDict = {
+crazy_dict = {
     'some': [{'thing': 1, 'crazy': 2, 'is': [3, 4, 5], 'up': 6},
              {}],
     'ayeee': [],
