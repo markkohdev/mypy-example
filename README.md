@@ -8,6 +8,11 @@ This is an example repo that will maybe help you get MyPy integrated into your o
 To understand what MyPy is and why it's awesome, I recommend you [check out the README](https://github.com/python/mypy#what-is-mypy).
 
 ## How to run this
+#### Requirements
+- python3.6
+    - `brew install --upgrade python3`
+    - `sudo apt-get update && sudo apt-get install python3.6`
+
 #### Quick setup
 In termimnal, cd into this repo's directory and run
 ```
@@ -35,6 +40,7 @@ A setup file for this repository.  It will install python3 on your linux or Mac 
 
 #### [requirements.txt](/requirements.txt)
 Our pip dependencies file.  This file includes any python packages you need in order to run this jawn.  It also specifies Mypy as a dependency.
+Run `make install` to install requirements using pip.
 
 #### [.travis.yml](/.travis.yml)
 Our TravisCI configuration file.  [Travis CI](https://travis-ci.org/) is an easy to configure CI pipeline that's free for open-source projects.  This file is a simple example of how to configure travis to run your tox tests, which will in turn run your MyPy tests.

@@ -16,7 +16,7 @@ APT_CMD=$(which apt-get)
 if [[ ! -z $BREW_CMD ]]; then
     # What to install with `brew`
     echo "Installing brew dependencies...";
-    brew install python3
+    brew install --upgrade python3
 
 elif [[ ! -z $APT_CMD ]]; then
     # What to install with `apt-get`
@@ -29,7 +29,7 @@ else
     exit 1;
 fi
 
-echo "Installing virtualenv and autoenv...";
+echo "Installing virtualenv...";
 pip3 install virtualenv
 
 echo "Checking for autoenv installation...";
