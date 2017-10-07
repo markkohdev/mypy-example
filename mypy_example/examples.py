@@ -17,10 +17,12 @@ class Person:
         self.name = new
 
     def describe(self) -> str:
-        return 'My name is {self.name} and I am {self.age} years old.'
+        return 'My name is {} and I am {} years old.'.format(self.name, self.age)
+
 
 p = Person('Mark', 24)
 print(p.describe())
+
 
 # FAIL CASES
 # print(p.decribe())
@@ -31,10 +33,12 @@ def func_with_optional(opt: Optional[str] = None) -> Optional[str]:
         return 'Func was passed a value: ' + opt
     return None
 
+
 # We can call func_with_optional
 print(func_with_optional('banana'))
 # Or without one
 print(func_with_optional())
+
 
 # FAIL CASES
 # func_with_optional(1)
@@ -58,7 +62,9 @@ def fib(n: int) -> Iterator[int]:
         yield a
         a, b = b, a + b
 
+
 fibs = fib(21)
+
 
 # FAIL CASES
 # some_value = some_func(-10)  # type: str

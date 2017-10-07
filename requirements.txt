@@ -1,4 +1,4 @@
 tox==2.7.0
-coverage==4.4.1
 mypy==0.521
 nltk==3.2.4
+pylint==1.7.4

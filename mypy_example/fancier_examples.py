@@ -9,25 +9,27 @@ from typing import Dict, List, Optional, Union
 # Note: It probably makes sense to turn this into a class!
 MyComplexDict = Dict[str, List[Dict[str, Union[List[int], int]]]]
 
+
 def complex_dict_consumer(jawn: Optional[MyComplexDict]) -> str:
     if jawn is None:
         return ''
     result: List[str] = []
     for key, value in jawn.items():
-        partial_result = f'{key}: '
+        partial_result = '{}: '.format(key)
         for sub_dict in value:
             for subkey, subvalue in sub_dict.items():
                 if isinstance(subvalue, list):
                     joined = ' + '.join([str(i) for i in subvalue])
-                    partial_result += f'({subkey} = {joined})'
+                    partial_result += '({} = {})'.format(subkey, joined)
                 else:
-                    partial_result += f'({subkey} = {subvalue})'
+                    partial_result += '({} = {})'.format(subkey, subvalue)
         result.append(partial_result)
 
     return ', '.join(result)
 
+
 crazy_dict: MyComplexDict = {
-    'some': [{'thing': 1, 'crazy': 2, 'is': [3,4,5], 'up': 6},
+    'some': [{'thing': 1, 'crazy': 2, 'is': [3, 4, 5], 'up': 6},
              {}],
     'ayeee': [],
     'blurp': [{'testing': 0}]
